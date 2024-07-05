@@ -122,6 +122,19 @@ async def final(message: Message, state: FSMContext):
     data.clear()
 
 
+@dp.message(Command('stats'))
+async def stats(message: Message):
+
+    userCount = db.getUserCount()
+    popular = db.getPopular()
+
+    await message.answer(html.bold('Количество пользователей:'
+                                   f'\n{userCount}'
+                                   f'\n\nСамая популярная вакансия:'
+                                   f'{html.italic(popular[0])}'
+                                   f'\n{html.bold(popular[1])} вакансий'))
+
+
 async def main():
     bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 

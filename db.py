@@ -118,11 +118,11 @@ def addStat(r, s, e, f):
 def getUserCount():
     try:
         c = sql.connect(
-            host='localhost',
+            host='sql',
             user='user',
             password='user1234',
             database='practice',
-            port='3906'
+            port='3306'
         )
 
         cur = c.cursor()
@@ -138,11 +138,11 @@ def getUserCount():
 def getPopular():
     try:
         c = sql.connect(
-            host='localhost',
+            host='sql',
             user='user',
             password='user1234',
             database='practice',
-            port='3906'
+            port='3306'
         )
 
         cur = c.cursor()
@@ -184,7 +184,4 @@ def getPopular():
 
         return [s, data[3]]
     except Exception as e:
-        return e
-
-
-print(getPopular())
+        return [None, None]
