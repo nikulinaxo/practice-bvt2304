@@ -22,10 +22,10 @@ services:
     ports:
       - "3906:3306"
 
-  pma:
-    image: phpmyadmin:latest
-    ports:
-      - "9090:80"
-    environment:
-      PMA_HOST: sql
-      MYSQL_ROOT_PASSWORD: root         
+  # pma:
+  #   image: phpmyadmin:latest
+  #   ports:
+  #     - "9090:80"
+  #   environment:
+  #     PMA_HOST: sql
+  #     MYSQL_ROOT_PASSWORD: root         
