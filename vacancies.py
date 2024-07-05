@@ -1,5 +1,6 @@
 import requests
 from currency_symbols import CurrencySymbols
+import db
 
 
 url = "https://api.hh.ru/vacancies"
@@ -22,6 +23,8 @@ def get(x, e, s):
     vacancies = vacancies.json()
 
     found = vacancies['found']
+
+    db.addStat(x, s, e, found)
 
 
     items = vacancies['items']

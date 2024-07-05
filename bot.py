@@ -11,6 +11,7 @@ from aiogram.fsm.state import StatesGroup, State
 from aiogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, KeyboardButton
 
 import vacancies
+import db
 
 TOKEN = '7471656640:AAEGx0xXM_Q4-Ms0wITshLqMydMMfOY3NIA'
 
@@ -18,6 +19,8 @@ dp = Dispatcher()
 
 @dp.message(CommandStart())
 async def start(message: Message):
+    if db.addUser(message.from_user.id):
+        print("новый пользователь добавлен в базу данных")
     await message.answer(f"Привет, {message.from_user.first_name}!"
                          '\n\n'
                          f'Пример для поиска вакансий:\n{html.bold('/search Python разработчик Москва')}')
