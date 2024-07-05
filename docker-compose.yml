@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  
+  main:
+    build: ./
+    command: python3 main.py
+    volumes:
+      - ./:/practice
+    depends_on:
+      - sql
+
+  sql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root1234'
+      MYSQL_DATABASE: 'practice'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'user1234'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    ports:
+      - "3906:3306"
+
+  pma:
+    image: phpmyadmin:latest
+    ports:
+      - "9090:80"
+    environment:
+      PMA_HOST: sql
+      MYSQL_ROOT_PASSWORD: root         

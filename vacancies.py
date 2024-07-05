@@ -21,6 +21,8 @@ def get(x, e, s):
 
     vacancies = vacancies.json()
 
+    found = vacancies['found']
+
 
     items = vacancies['items']
 
